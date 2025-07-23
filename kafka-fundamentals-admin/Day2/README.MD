@@ -1,4 +1,4 @@
-# Apache Kafka - Arquitetura, Zookeeper e KRaft
+# Apache Kafka - Architecture, Zookeeper and KRaft
 Apache Kafka Fundamentals from an Admin Perspective.
 
 The video was created to share the knowledge I’ve gained working with Kafka with colleagues and a few friends.
