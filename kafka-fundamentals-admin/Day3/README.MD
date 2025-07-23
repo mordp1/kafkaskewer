@@ -21,41 +21,35 @@ KAFKA_CLUSTER_ID="$(bin/kafka-storage.sh random-uuid)"
 
 Format Log Directories
 ```bash
-bin/kafka-storage.sh format --standalone -t $KAFKA_CLUSTER_ID -c config/server.properties
+kafka-storage.sh format --standalone -t $KAFKA_CLUSTER_ID -c config/server.properties
 ```
 
 Start the Kafka Server
 ```bash
-bin/kafka-server-start.sh config/server.properties
+kafka-server-start.sh -daemon config/server.properties
 ```
 
-Create Topico
+Create Topic
 ```bash
-$ bin/kafka-topics.sh --bootstrap-server localhost:9092 --create --topic topico2 --partitions 4
+kafka-topics.sh --bootstrap-server localhost:9092 --create --topic topic2 --partitions 4
 ```
 
-List Topicos
+List Topic
 ```bash
-$ bin/kafka-topics.sh --bootstrap-server localhost:9092 --list
+kafka-topics.sh --bootstrap-server localhost:9092 --list
 ```
 
 Describe
 ```bash
-$ bin/kafka-topics.sh --bootstrap-server localhost:9092 --describe --topic topico2
+kafka-topics.sh --bootstrap-server localhost:9092 --describe --topic topic2
 ```
 
 Producer
 ```bash
-$ bin/kafka-console-producer.sh --bootstrap-server localhost:9092 --topic topico1
+kafka-console-producer.sh --bootstrap-server localhost:9092 --topic topic2
 ```
 
-Consumer 
+Consumer
 ```bash
-docker 
-```
-
-Executar o consumer
-```bash
-$ cd /opt/kafka_2.13-3.4.0
-$ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic topico1
+kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic topic2 --from-beginning
 ```
