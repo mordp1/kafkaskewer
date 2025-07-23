@@ -3,7 +3,7 @@
 https://kafka.apache.org/powered-by
 
 ### Franz Kafka:
-https://pt.wikipedia.org/wiki/Franz_Kafka
+https://en.wikipedia.org/wiki/Franz_Kafka
 
 ### Doc/Ref:
 https://strimzi.io/ 
