@@ -1,4 +1,4 @@
-# Apache Kafka - Entendendo o Rebalance, Consumer e Consumer Group.
+# Apache Kafka - Understanding Rebalance, Consumer and Consumer Group.
 
 ## Fatiando o Vídeo
 

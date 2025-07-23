@@ -1,14 +1,12 @@
-# Kafka Connect - FileStream produzindo mensagens a partir de um arquivo local.
+# Kafka Connect - FileStream from local file.
 
-Fundamentos Apache Kafka na visão Admin.
+Apache Kafka Fundamentals from an Admin Perspective.
 
-O vídeo foi feito com a idéia de compartilhar o meu conhecimento adquirido, trabalhando com Kafka, para colegas de trabalho e alguns amigos.
-Eu mesmo editei o vídeo, sem muito conhecimento na ferramenta.
+The video was created with the intention of sharing the knowledge I have gained working with Kafka with colleagues and a few friends.
+I edited the video myself, without much experience in video editing tools.
 
-Entendo na pratica o Kafka Connect, configurando um connector FileStream para que possa ler um arquivo local e produzir mensagens no topico do Kafka
+Understanding Kafka Connect in practice, configuring a FileStream connector so that it can read a local file and produce messages on the Kafka topic
 
-## Comandos: 
-Estou utilizando um container neste momento, indico instalar o Docker ou Docker Desktop
 
 ## Kafkacat: 
 

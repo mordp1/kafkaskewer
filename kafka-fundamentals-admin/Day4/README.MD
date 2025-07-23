@@ -1,9 +1,8 @@
 # Apache Kafka - Log, Stream e Broker
-Fundamentos Apache Kafka na visão Admin.
+Apache Kafka Fundamentals from an Admin Perspective.
 
-O vídeo foi feito com a idéia de compartilhar o meu conhecimento adquirido, trabalhando com Kafka, para colegas de trabalho e alguns amigos.
-Eu mesmo editei o vídeo, sem muito conhecimento na ferramenta.
-
+The video was created with the intention of sharing the knowledge I have gained working with Kafka with colleagues and a few friends.
+I edited the video myself, without much experience in video editing tools.
 
 ## Comandos: 
 

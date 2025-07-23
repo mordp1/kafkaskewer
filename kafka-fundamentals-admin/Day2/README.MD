@@ -1,89 +1,110 @@
 # Apache Kafka - Arquitetura, Zookeeper e KRaft
-Fundamentos Apache Kafka na visão Admin.
+Apache Kafka Fundamentals from an Admin Perspective.
 
-O vídeo foi feito com a idéia de compartilhar o meu conhecimento adquirido, trabalhando com Kafka, para colegas de trabalho e alguns amigos.
-Eu mesmo editei o vídeo, sem muito conhecimento na ferramenta.
+The video was created to share the knowledge I’ve gained working with Kafka with colleagues and a few friends.
+I personally edited the video, although I don’t have much experience with video editing tools.
 
+ 
+I am currently using a container. I recommend installing Docker or Docker Desktop – available at https://www.docker.com/products/docker-desktop/.
 
-## Comandos: 
-Estou utilizando um container neste momento, indico instalar o Docker ou Docker Desktop - https://www.docker.com/products/docker-desktop/
-
-### Criar diretório em sua máquina local e executar os comandos a partir deste diretório
-
+### Create a Directory on Your Local Machine and Run All Commands From There
 ``` bash
-$ mkdir kafka
-$ cd kafka
+mkdir kafka
+cd kafka
 ```
 
-### Baixar imagem do Ubuntu
+Download the Ubuntu Image
 ``` bash
-$ docker pull ubuntu
+docker pull ubuntu
 ```
 
-### Rodando o container. segue examplos para diferentes SO:
-#### No Windows CMD
+### Running the Container: Examples for Different Operating Systems
+On Windows CMD
 ``` bash
-docker run --rm -it -v %cd%:/opt -p 9092:9092 ubuntu:latest
+docker run --rm -it --name kafka01 --hostname kafka01 -v %cd%:/opt -p 9092:9092 ubuntu:latest
 ```
-#### No Windows Poweshell
+
+On Windows PowerShell
 ``` bash
-docker run --rm -it -v  ${PWD}:/opt -p 9092:9092 ubuntu:latest
+docker run --rm -it --name kafka01 --hostname kafka01 -v  ${PWD}:/opt -p 9092:9092 ubuntu:latest
 ```
-#### No Linux 
+
+On Linux
 ``` bash
-$ docker run --rm -it -v $(pwd):/opt -p 9092:9092 ubuntu:latest
+docker run --rm -it --name kafka01 --hostname kafka01 -v $(pwd):/opt -p 9092:9092 ubuntu:latest
 ``` 
-#### Utilizando Podman no Linux
+
+Using Podman on Linux
 ``` bash
-$ sudo podman run --privileged --rm -it -v $(pwd):/opt -p 9092:9092 ubuntu:latest
+sudo podman run --privileged --rm -it --name kafka01 --hostname kafka01 -v $(pwd):/opt -p 9092:9092 ubuntu:latest
 ``` 
-### Instalando pacotes
+
+Installing Packages
 ``` bash
-$ apt update && apt install default-jdk wget vim jq kafkacat -y
+apt update && apt install default-jdk wget vim jq kafkacat -y
 ``` 
-### Baixando o Kafka
+
+# Zookeeper + Kafka
+
+Downloading Kafka
 ```bash 
-$ wget -c https://dlcdn.apache.org/kafka/3.4.0/kafka_2.13-3.4.0.tgz -O - | tar -xz
-
-$ cd kafka_2.13-3.4.0
+wget -c https://dlcdn.apache.org/kafka/3.9.1/kafka_2.13-3.9.1.tgz -O - | tar -xz
+cd kafka_2.13-3.9.1
 ``` 
-### Inciando Zookeeper
+
+Starting Zookeeper
 ``` bash
-$ bin/zookeeper-server-start.sh -daemon config/zookeeper.properties
+bin/zookeeper-server-start.sh -daemon config/zookeeper.properties
 ``` 
-### Iniciando o Kafka
+
+Starting Kafka
 ``` bash
-$ bin/kafka-server-start.sh -daemon config/server.properties
+bin/kafka-server-start.sh -daemon config/server.properties
 ``` 
-### Criar Topico
+
+Creating a Topic
 ``` bash
-$ bin/kafka-topics.sh --bootstrap-server localhost:9092 --create --topic topico1
+bin/kafka-topics.sh --bootstrap-server localhost:9092 --create --topic topico1
 ``` 
-### Listar Topicos
+
+Listing Topics
 ``` bash
-$ bin/kafka-topics.sh --bootstrap-server localhost:9092 --list
+bin/kafka-topics.sh --bootstrap-server localhost:9092 --list
 ``` 
-### Describe
+
+Describe
 ``` bash
-$ bin/kafka-topics.sh --bootstrap-server localhost:9092 --describe --topic topico1
+bin/kafka-topics.sh --bootstrap-server localhost:9092 --describe --topic topico1
 ``` 
 
-## Fatiando Vídeo
+# Kraft + Kafka
 
-https://youtu.be/IYcp8lr8L6E
+```bash 
+wget -c https://dlcdn.apache.org/kafka/4.0.0/kafka_2.13-4.0.0.tgz -O - | tar -xz
+cd kafka_2.13-4.0.0
+``` 
 
-00:00 ZooKeeper
+## Get from Docker image:
+```bash
+docker pull apache/kafka:4.0.0
+```
 
-02:39 Iniciando container e instalação de Pacotes
+Start the Kafka Docker container:
+```bash
+docker run --rm -it --name kafka01 --hostname kafka01 -e PATH="/opt/kafka/bin/:$PATH" -p 9092:9092 apache/kafka:4.0.0 /bin/bash
+```
 
-03:42 Binários e arquivos de configuração
+Generate a Cluster UUID
+```bash
+KAFKA_CLUSTER_ID="$(bin/kafka-storage.sh random-uuid)"
+```
 
-06:09 Iniciando ZooKeeper e Kafka
+Format Log Directories
+```bash
+bin/kafka-storage.sh format --standalone -t $KAFKA_CLUSTER_ID -c config/server.properties
+```
 
-07:23 Logs
-
-08:21 Criando Topico
-
-09:11 Limitação ZooKeeper e KRaft
-
-13:29 Topicos
+Start the Kafka Server
+```bash
+bin/kafka-server-start.sh config/server.properties
+```

@@ -1,10 +1,8 @@
 # Apache Kafka - Entendendo o Kafka Connect
-Fundamentos Apache Kafka na visão Admin.
+Apache Kafka Fundamentals from an Admin Perspective.
 
-O vídeo foi feito com a idéia de compartilhar o meu conhecimento adquirido, trabalhando com Kafka, para colegas de trabalho e alguns amigos.
-
-Eu mesmo editei o vídeo, sem muito conhecimento na ferramenta.
-
+The video was created with the intention of sharing the knowledge I have gained working with Kafka with colleagues and a few friends.
+I edited the video myself, without much experience in video editing tools.
 
 ### Apache Kafka Connect
 
@@ -18,10 +16,6 @@ https://www.confluent.io/hub/
 ### Camel connector 
 https://camel.apache.org/camel-kafka-connector/next/reference/index.html
 
-### Instruções de como instalar o Kafka Connect em modo distribuído.
+### Install Kafka Connect
 
 https://docs.confluent.io/platform/current/connect/userguide.html
-
-## Fatiando o Vídeo
-
-https://youtu.be/Obkg0sa4GB4

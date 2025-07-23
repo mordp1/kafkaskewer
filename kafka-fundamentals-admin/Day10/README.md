@@ -1,15 +1,11 @@
-# Apache Kafka - Troubleshooting e Administrando Kafka Cluster.
+# Apache Kafka - Troubleshooting and Managing Kafka Cluster
 
-Fundamentos Apache Kafka na visão Admin.
+Apache Kafka Fundamentals from an Admin Perspective.
 
-O vídeo foi feito com a idéia de compartilhar o meu conhecimento adquirido, trabalhando com Kafka, para colegas de trabalho e alguns amigos.
-Eu mesmo editei o vídeo, sem muito conhecimento na ferramenta.
+The video was created with the intention of sharing the knowledge I have gained working with Kafka with colleagues and a few friends.
+I edited the video myself, without much experience in video editing tools.
 
-Entendo na pratica como realizar Troubleshooting, quais logs devemos olhar no nosso Cluster do Kafka, por onde devemos começar.
-
-## Comandos: 
-
-Estou utilizando um container neste momento, indico instalar o Docker ou Docker Desktop
+Understanding in practice how to perform Troubleshooting, which logs we should look at in our Kafka Cluster, where we should start.
 
 ### Baixe o repositorio
 

@@ -1,56 +1,61 @@
 # Apache Kafka - Topic, Partition e Segment.
-Fundamentos Apache Kafka na visão Admin.
+Apache Kafka Fundamentals from an Admin Perspective.
 
-O vídeo foi feito com a idéia de compartilhar o meu conhecimento adquirido, trabalhando com Kafka, para colegas de trabalho e alguns amigos.
-Eu mesmo editei o vídeo, sem muito conhecimento na ferramenta.
+The video was created with the intention of sharing the knowledge I have gained working with Kafka with colleagues and a few friends.
+I edited the video myself, without much experience in video editing tools.
 
 
-Comandos: 
-Estou utilizando um container neste momento, indico instalar o Docker ou Docker Desktop.
+I am currently using a container. I recommend installing Docker or Docker Desktop – available at https://www.docker.com/products/docker-desktop/.
 
 https://www.docker.com/products/docker-desktop/
 
-## Criar Topico
+# Start Kafka
+```bash
+docker run --rm -it --name kafka01 --hostname kafka01 -e PATH="/opt/kafka/bin/:$PATH" -p 9092:9092 apache/kafka:4.0.0 /bin/bash
+```
+
+Generate a Cluster UUID
+```bash
+KAFKA_CLUSTER_ID="$(bin/kafka-storage.sh random-uuid)"
+```
+
+Format Log Directories
+```bash
+bin/kafka-storage.sh format --standalone -t $KAFKA_CLUSTER_ID -c config/server.properties
+```
+
+Start the Kafka Server
+```bash
+bin/kafka-server-start.sh config/server.properties
+```
+
+Create Topico
 ```bash
 $ bin/kafka-topics.sh --bootstrap-server localhost:9092 --create --topic topico2 --partitions 4
 ```
-## Listar Topicos
+
+List Topicos
 ```bash
 $ bin/kafka-topics.sh --bootstrap-server localhost:9092 --list
 ```
-## Describe
+
+Describe
 ```bash
 $ bin/kafka-topics.sh --bootstrap-server localhost:9092 --describe --topic topico2
 ```
-## Executar Producer
+
+Producer
 ```bash
 $ bin/kafka-console-producer.sh --bootstrap-server localhost:9092 --topic topico1
 ```
-### Abra outro terminal e procure seu container.
+
+Consumer 
 ```bash
-$ docker ps
+docker 
 ```
-## troque o NOME pelo nome do seu container
-```bash
-$ docker exec -ti NOME /bin/bash
-```
-## Executar o consumer
+
+Executar o consumer
 ```bash
 $ cd /opt/kafka_2.13-3.4.0
 $ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic topico1
 ```
-## Fatiando o Vídeo
-
-https://youtu.be/gsaEp1WQZM8
-
-00:00 - Topicos
-
-03:19 - Padrão de armazenamento dos segmentos do Kafka
-
-04:52 - kafka-topics.sh
-
-06:25 - Explicando o describe
-
-07:15  - server.properties
-
-12:12 - producer-console e consumer-console

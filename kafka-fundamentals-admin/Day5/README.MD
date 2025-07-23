@@ -1,9 +1,9 @@
-# Apache Kafka - Entendendo replicação de partições e ISR (In-Sync Replicas)
+# Apache Kafka - Partition Replication and ISR (In-Sync Replicas)
 
-Apache Kafka na visão Admin.
+Apache Kafka Fundamentals from an Admin Perspective.
 
-O vídeo foi feito com a idéia de compartilhar o meu conhecimento adquirido, trabalhando com Kafka, para colegas de trabalho e alguns amigos.
-Eu mesmo editei o vídeo, sem muito conhecimento na ferramenta.
+The video was created with the intention of sharing the knowledge I have gained working with Kafka with colleagues and a few friends.
+I edited the video myself, without much experience in video editing tools.
 
 Entendo na pratica a replicaçãodas partições no cluster do Apache Kafka, no pequeno cluster que estou rodando via container. 
 
