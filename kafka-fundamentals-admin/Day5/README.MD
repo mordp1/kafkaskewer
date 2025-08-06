@@ -5,57 +5,52 @@ Apache Kafka Fundamentals from an Admin Perspective.
 The video was created with the intention of sharing the knowledge I have gained working with Kafka with colleagues and a few friends.
 I edited the video myself, without much experience in video editing tools.
 
-Entendo na pratica a replicaçãodas partições no cluster do Apache Kafka, no pequeno cluster que estou rodando via container. 
+Understanding Apache Kafka Partition Replication in Practice with a Small Cluster Running in a Container
 
-## Comandos: 
-Estou utilizando um container neste momento, indico instalar o Docker ou Docker Desktop
+## Commands:
+I am currently running a container and recommend installing Docker or Docker Desktop.
 
-Utilizaremos o exemplo da Conduktor.
-
-https://www.conduktor.io/kafka/how-to-start-kafka-using-docker/
-
-### Clone do repo
+Start 
 ```bash
-$ git clone https://github.com/conduktor/kafka-stack-docker-compose.git
-$ cd kafka-stack-docker-compose
+docker-compose -f docker-compose-kraft.yaml up -d
 ```
-### Subindo 
-```bash
-$ docker-compose -f zk-multiple-kafka-multiple.yml up -d
-```
-### Conectando no shell do container kafka1
-```bash
-$ docker exec -it kafka1 /bin/bash
-```
-### Criando os 3 topicos dentro do container
-```bash
-$ kafka-topics --bootstrap-server kafka1:19092 --topic topic1 --create --partitions 3 --replication-factor 1
 
-$ kafka-topics --bootstrap-server kafka1:19092 --topic topic2 --create --partitions 3 --replication-factor 2
-
-$ kafka-topics --bootstrap-server kafka1:19092 --topic topic3 --create --partitions 3 --replication-factor 3
-```
-### Para executar os comandos fora do container, precisa ter os binários do Kafka:
+Connecting to the shell of the kafka1 container
 ```bash
-$ wget -c https://dlcdn.apache.org/kafka/3.4.0/kafka_2.13-3.4.0.tgz -O - | tar -xz
-$ cd kafka_2.13-3.4.0
+docker exec -it kafka1 /bin/bash
 ```
-### Comandos para cirar topicos fora do container
-```bash
-$ bin/kafka-topics.sh --bootstrap-server localhost:9092 --topic topic1 --create --partitions 3 --replication-factor 1
 
-$ bin/kafka-topics.sh --bootstrap-server localhost:9092 --topic topic2 --create --partitions 3 --replication-factor 2
-
-$ bin/kafka-topics.sh --bootstrap-server localhost:9092 --topic topic3 --create --partitions 3 --replication-factor 3
-```
-### Remover container: 
+Creating three topics inside the container
 ```bash
-$ docker rm -f kafka02
-```
-### Describe todos os topicos
-```bash
-$ bin/kafka-topics.sh --bootstrap-server localhost:9092 --describe
-```
-## Fatiando o Vídeo
+kafka-topics.sh --bootstrap-server kafka1:19092 --topic topic1 --create --partitions 3 --replication-factor 1
 
-https://youtu.be/fiV3EOJiK-Y
+kafka-topics.sh --bootstrap-server kafka1:19092 --topic topic2 --create --partitions 3 --replication-factor 2
+
+kafka-topics.sh --bootstrap-server kafka1:19092 --topic topic3 --create --partitions 3 --replication-factor 3
+```
+To run the commands outside the container, you need to have the Kafka binaries:
+
+```bash
+wget -c https://dlcdn.apache.org/kafka/4.0.0/kafka_2.13-4.0.0.tgz -O - | tar -xz
+cd kafka_2.13-4.0.0
+```
+
+Commands for creating topics outside the container
+```bash
+bin/kafka-topics.sh --bootstrap-server localhost:29092 --topic topic1 --create --partitions 3 --replication-factor 1
+
+bin/kafka-topics.sh --bootstrap-server localhost:29092 --topic topic2 --create --partitions 3 --replication-factor 2
+
+bin/kafka-topics.sh --bootstrap-server localhost:29092 --topic topic3 --create --partitions 3 --replication-factor 3
+```
+
+Remove container:
+
+```bash
+docker rm -f kafka2
+```
+
+Describe all topics
+```bash
+bin/kafka-topics.sh --bootstrap-server localhost:29092 --describe
+```
